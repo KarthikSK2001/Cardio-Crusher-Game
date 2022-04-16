@@ -1,0 +1,303 @@
+/* Copyright (c) 2017 MIT 6.813/6.831 course staff, all rights reserved.
+ * Redistribution of original or derived work requires permission of course staff.
+ */
+
+
+/* REMOVE ME - dashed lines and height for debugging */
+
+
+/*
+#mainColumn {
+  outline: 1px dashed orange;
+  height: 200px;
+}
+
+
+/* Your css code here! */
+
+div {
+    /*border: 1px solid green;*/
+}
+
+body {
+    margin: auto;
+    vertical-align: middle;
+    font-weight: bold;
+    text-align: center;
+}
+
+img {
+    position: absolute;
+}
+
+.btn {
+    margin: 5px;
+    border: 1px solid #666666;
+    box-shadow: 1px 1px 5px gray;
+}
+
+.btn:hover {
+    background-color: #8c8c8c;
+}
+
+.arrow {
+    margin: 0;
+    color: white;
+}
+
+.arrow:disabled {
+    background-color: grey;
+}
+
+.arrow:enabled {
+    background-color: #4889f0;
+}
+
+#firstColumn,
+#mainColumn,
+#lastColumn {
+    margin: auto;
+    padding: 10px;
+}
+
+#firstColumn {
+    z-index: 3;
+}
+
+#gameTitle {
+    font-weight: bold;
+    color: red;
+}
+
+#gameBoard {
+    z-index: 1;
+    margin: auto;
+    width: 320px;
+    height: 320px;
+    table-layout: fixed;
+    position: relative;
+}
+
+#moveInput {
+    width: 50px;
+}
+
+#moveInput:hover,
+#moveInput:focus {
+    box-shadow: 0 0 5px blue;
+}
+
+#arrowContainer {
+    margin: 20px auto;
+}
+
+#canvas {
+    z-index: 10;
+    position: absolute;
+    top: 10px;
+    left: calc(50% - 160px);
+    opacity: 0.7;
+    padding: 0.2rem;
+    padding-top: 0.2rem;
+    border-radius: 10px;
+    box-shadow: 29px 29px 38px #868686, -29px -29px 38px #ffffff;
+}
+
+#level {
+    color: orangered;
+    font-weight: bolder;
+}
+
+#scoreLabel {
+    background-color: lightgrey;
+    width: 12em;
+}
+
+#cover {
+    z-index: 2;
+    position: absolute;
+    top: -500px;
+    left: calc(50% - 160px);
+    width: 320px;
+    height: 500px;
+}
+
+#newGame,
+#showMove {
+    width: 10em;
+}
+
+#DEBUG {
+    z-index: 100;
+    position: fixed;
+    top: 50px;
+    left: 25px;
+    background-color: #ff4d4d;
+    opacity: 0.85;
+}
+
+ ::-webkit-scrollbar {
+    width: 8px;
+}
+
+ ::-webkit-scrollbar-track {
+    background: #161b22;
+}
+
+ ::-webkit-scrollbar-thumb {
+    background: #161b22;
+}
+
+.btn {
+    font: 18px Helvetica;
+    padding: 12px 22px 10px;
+    margin: 0;
+    border: none;
+    border-bottom: 3px #aacedd solid;
+    text-decoration: none;
+    background-image: -moz-linear-gradient(#ffffff, #f8f8f8);
+    background-image: -webkit-linear-gradient(#ffffff, #f8f8f8);
+    background-image: linear-gradient(#ffffff, #f8f8f8);
+    position: relative;
+    -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 0 25px -5px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 0 25px -5px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 0 25px -5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.btn:active {
+    position: relative;
+    top: 3px;
+    border: none;
+}
+
+.btn-primary {
+    border-bottom: 3px #000609 solid;
+    background-image: -moz-linear-gradient(#0079bb, #005888);
+    background-image: -webkit-linear-gradient(#0079bb, #005888);
+    background-image: linear-gradient(#0079bb, #005888);
+}
+
+.btn-primary:hover {
+    background-image: -moz-linear-gradient(#009aee, #005888);
+    background-image: -webkit-linear-gradient(#009aee, #005888);
+    background-image: linear-gradient(#009aee, #005888);
+}
+
+.btn-large {
+    font-size: 18px;
+    padding: 12px 22px 10px;
+}
+
+.card {
+    border-radius: 10px;
+    box-shadow: 29px 29px 38px #868686, -29px -29px 38px #ffffff;
+}
+
+.nametwo {
+    color: crimson;
+    font-size: 18px;
+    font-weight: bolder;
+}
+
+.extrainfo {
+    color: #a515f2;
+    font-size: 18px;
+    font-weight: bolder;
+}
+
+#scoreLabel {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: 3px solid crimson;
+    font-weight: bolder;
+}
+
+html,
+body {
+    height: 50%
+}
+
+.bg_heart {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden
+}
+
+.heart {
+    position: absolute;
+    top: -50%;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -m-transform: rotate(-45deg);
+    transform: rotate(-45deg)
+}
+
+.heart:before {
+    position: absolute;
+    top: -50%;
+    left: 0;
+    display: block;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    border-radius: 100%;
+}
+
+.heart:after {
+    position: absolute;
+    top: 0;
+    right: -50%;
+    display: block;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    border-radius: 100%;
+}
+
+@-webkit-keyframes love {
+    0% {
+        top: 110%
+    }
+}
+
+@-moz-keyframes love {
+    0% {
+        top: 110%
+    }
+}
+
+@-ms-keyframes love {
+    0% {
+        top: 110%
+    }
+}
+
+@keyframes love {
+    0% {
+        top: 110%
+    }
+}
+
+* {
+    font-family: 'IBM Plex Sans Hebrew', sans-serif;
+}
+
+@media only screen and (max-width: 420px) {
+    .bg_heart {
+        display: none;
+    }
+    #newGame {
+        display: none;
+    }
+    #level {
+        display: none;
+    }
+}

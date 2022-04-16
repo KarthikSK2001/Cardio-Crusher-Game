@@ -1,0 +1,110 @@
+/* Copyright (c) 2017 MIT 6.813/6.831 course staff, all rights reserved.
+ * Redistribution of original or derived work requires permission of course staff.
+ */
+
+
+/* REMOVE ME - dashed lines and height for debugging */
+
+
+/*
+#mainColumn {
+  outline: 1px dashed orange;
+  height: 200px;
+}
+*/
+
+
+/* Your css code here! */
+
+div {
+    /*border: 1px solid green;*/
+}
+
+body {
+    margin: auto;
+    vertical-align: middle;
+    font-weight: bold;
+    text-align: center;
+}
+
+.btn {
+    border: 1px solid #666666;
+    box-shadow: 1px 1px 5px gray;
+}
+
+.btn:hover {
+    background-color: #8c8c8c;
+}
+
+.btn:disabled {
+    background-color: #330000;
+}
+
+.candy-red,
+.candy-green,
+.candy-orange,
+.candy-blue,
+.candy-purple,
+.candy-yellow {
+    display: table;
+    height: 100%;
+    width: 100%;
+    color: white;
+}
+
+.candy-red {
+    background-color: #ff3d2c;
+}
+
+.candy-green {
+    background-color: #54d03e;
+}
+
+.candy-orange {
+    background-color: #fb790e;
+}
+
+.candy-blue {
+    background-color: #0f53f2;
+}
+
+.candy-purple {
+    background-color: #a616f3;
+}
+
+.candy-yellow {
+    background-color: #fcd33d;
+    color: gray;
+}
+
+#firstColumn,
+#mainColumn,
+#lastColumn {
+    margin: auto;
+    padding: 10px;
+}
+
+#gameTitle {
+    font-weight: bold;
+    color: red;
+}
+
+#gameBoard {
+    margin: auto;
+    width: 320px;
+    height: 320px;
+    table-layout: fixed;
+}
+
+#moveInput {
+    width: 50px;
+}
+
+#moveInput:hover,
+#moveInput:focus {
+    box-shadow: 0 0 5px blue;
+}
+
+#arrowContainer {
+    margin: 10px auto;
+}

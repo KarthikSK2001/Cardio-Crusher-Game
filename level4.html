@@ -1,0 +1,212 @@
+<!--
+CandyCrush
+Your Name: Edward Hughes
+Collaborators: nobody
+-->
+<!DOCTYPE html>
+<html>
+<!--
+/* Copyright (c) 2017 MIT 6.813/6.831 course staff, all rights reserved.
+ * Redistribution of original or derived work requires permission of course staff.
+ */
+-->
+
+	<head>
+		<meta charset="utf-8">
+		<title>Cardio-Crusher | Level-4</title>
+		
+		<!-- Load style sheets -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.css">
+		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="shortcut icon" href="/graphics/favicon.png" type="image/x-icon" />
+		<link rel="stylesheet" href="mainLayout.css">
+		    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew&display=swap" rel="stylesheet">
+
+		<!-- Use mobile-aware viewport -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		 <link rel="alternate" type="application/atom+xml" title="Cardio-Crusher - Atom">
+    <meta content='Cardio-Crusher' property='og:title' />
+    <meta content='Cardio-Crusher - A Simple Candy Crush Saga Replicate' property='og:description' />
+   
+   
+    
+    <meta name="author" content="developed by Karthik.S (UG CSE BMSCE)" />
+    <meta property="og:url" content="https://cardio-crusher.netlify.app/" />
+		<!-- Load any supplemental Javascript libraries here -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/2.4.2/seedrandom.js"></script>
+		<script src="candy.js"></script>
+		<script src="board.js"></script>
+		<script src="rules.js"></script>
+		<script src="handler4.js"></script>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4H46B4L32N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4H46B4L32N');
+</script>
+	</head>
+  <div class="bg_heart"></div>
+	<body>
+		<div class="container">
+		
+			<div class="row">
+				<div class="col-md-3" id="firstColumn">
+			<div class="card text-center" width="50%" style='margin-bottom:1.5rem'>
+
+        <div class="card-body" >
+
+            <div class="text-center" style="margin-top: 1.3rem;font-size: 16px;">
+
+
+                 <h3  class="nametwo" ></h3>
+				<h3 class='extrainfo'></h3>
+				<h3 class='extrainfo' style="color:#155af5">Level 4 : Target - 800Pts</h3>
+                <label id="scoreLabel">0 points</label><br>
+					<h5 id="level"></h5>
+					<input class="btn btn-primary" type="button" id="newGame" value="New Game" style='margin-bottom:1rem'><br/>
+            </div>
+           
+
+        </div>
+       
+    </div>
+					
+					<!--<input class="btn btn-default" type="button" id="showMove" value="Show Move"> {% endcomment %}-->
+				</div>
+				
+				<div class="col-md-6" id="mainColumn" >
+					<div id="cover"></div>
+					<div id="gameBoard" ></div>
+					<canvas id="canvas" width="320" height="320" >
+						<p>Canvas not supported on your browser.</p>
+					</canvas>
+				</div>
+				
+				<div class="col-md-3" id="lastColumn"></div>
+				<!--
+				<div class="col-md-3" id="lastColumn">
+					<div class="col-md-12">
+						<form action="">
+							Move: <input type="text" id="moveInput" maxlength="3" value="" oninput="CheckInput()">
+						</form>
+					</div>
+					<div class="col-md-12">
+						<table id="arrowContainer">
+							<tr>
+								<td></td>
+								<td><input class="btn btn-default arrow" type="button" id="up" value="&uarr;"></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td><input class="btn btn-default arrow" type="button" id="left" value="&larr;"></td>
+								<td></td>
+								<td><input class="btn btn-default arrow" type="button" id="right" value="&rarr;"></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td><input class="btn btn-default arrow" type="button" id="down" value="&darr;"></td>
+								<td></td>
+							</tr>
+						</table>
+					</div>
+					<div class="col-md-12">
+						<input class="btn btn-default" type="button" id="crushOnce" value="Crush Once (spacebar)">
+					</div>
+				</div>
+				-->
+				
+			</div> <!-- class="row" -->
+		</div> <!-- class="container" -->
+	
+	</body>
+	 <div class="bg_heart"></div>
+<script>
+     let nametwo = window.localStorage.getItem("name-key");
+
+        for (let i = 0; i < document.getElementsByClassName("nametwo").length; i++) {
+            document.getElementsByClassName("nametwo")[i].innerHTML = nametwo
+        }
+    const $message = $("#message");
+  	 if (parseInt((document.getElementById("scoreLabel").textContent.slice(0, 1)))>= 0 && parseInt((document.getElementById("scoreLabel").textContent.slice(0, 2)))<=10) {
+
+        let timerInterval
+  Swal.fire({
+  title: 'Game Loading...',
+  html: 'Lets Start in <b></b> Milliseconds.',
+  timer: 3000,
+
+  padding: '2em',
+  background: '#fff',
+  backdrop: `s
+    rgba(0,0,123,0.4)
+    left top
+    no-repeat
+  `,
+  timerProgressBar: true,
+  didOpen: () => {
+    Swal.showLoading()
+    const b = Swal.getHtmlContainer().querySelector('b')
+    timerInterval = setInterval(() => {
+      b.textContent = Swal.getTimerLeft()
+    }, 100)
+  },
+  willClose: () => {
+    clearInterval(timerInterval)
+  }
+}).then((result) => {
+  /* Read more about handling dismissals below */
+  if (result.dismiss === Swal.DismissReason.timer) {
+    console.log('I was closed by the timer');
+	
+  }
+})
+		
+		
+		/*$message.text("Your are a Beginner :)");
+        $message.css("color", "darkgreen");
+	
+    } 
+	else if (parseInt((document.getElementById("scoreLabel").textContent.slice(0, 2)))>= 11 && parseInt((document.getElementById("scoreLabel").textContent.slice(0, 2)))<=20) {
+		
+		$message.text("Your are a Beginner+1 :)");
+        $message.css("color", "darkgreen");
+
+	}
+   else{
+	   
+   }
+*/
+	   }
+	   $( "#header-plugin" ).load( "https://vivinantony.github.io/header-plugin/", function() {
+	$("a.back-to-link").attr("href", "http://blog.thelittletechie.com/2015/03/love-heart-animation-using-css3.html#tlt")  
+});
+
+var love = setInterval(function() {
+    var r_num = Math.floor(Math.random() * 40) + 1;
+    var r_size = Math.floor(Math.random() * 65) + 10;
+    var r_left = Math.floor(Math.random() * 100) + 1;
+    var r_bg = Math.floor(Math.random() * 25) + 100;
+    var r_time = Math.floor(Math.random() * 5) + 5;
+
+    $('.bg_heart').append("<div class='heart' style='width:" + r_size + "px;height:" + r_size + "px;left:" + r_left + "%;background:rgba(255," + (r_bg - 25) + "," + r_bg + ",1);-webkit-animation:love " + r_time + "s ease;-moz-animation:love " + r_time + "s ease;-ms-animation:love " + r_time + "s ease;animation:love " + r_time + "s ease'></div>");
+
+    $('.bg_heart').append("<div class='heart' style='width:" + (r_size - 10) + "px;height:" + (r_size - 10) + "px;left:" + (r_left + r_num) + "%;background:rgba(255," + (r_bg - 25) + "," + (r_bg + 25) + ",1);-webkit-animation:love " + (r_time + 5) + "s ease;-moz-animation:love " + (r_time + 5) + "s ease;-ms-animation:love " + (r_time + 5) + "s ease;animation:love " + (r_time + 5) + "s ease'></div>");
+
+    $('.heart').each(function() {
+        var top = $(this).css("top").replace(/[^-\d\.]/g, '');
+        var width = $(this).css("width").replace(/[^-\d\.]/g, '');
+        if (top <= -100 || width >= 150) {
+            $(this).detach();
+        }
+    });
+}, 500);
+document.addEventListener('contextmenu', event => event.preventDefault());
+</script>
+
+</html>
